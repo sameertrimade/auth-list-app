@@ -1,0 +1,42 @@
+:host {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+:host ::ng-deep .mat-mdc-form-field-error-wrapper {
+  padding: 0;
+}
+
+.login-container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: 1px solid #e4e9f0;
+  width: 24rem;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.login-form > *:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+
+.form-field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.required-asterisk {
+  color: #f05454;
+}
+
+.login-btn {
+  width: 100%;
+}
