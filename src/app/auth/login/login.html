@@ -1,1 +1,54 @@
-<h3>Login Component Works!</h3>
+<div class="login-container">
+  <h2>Login</h2>
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-field-container">
+      <label for="email">Email <span class="required-asterisk">*</span></label>
+      <mat-form-field appearance="outline">
+        <input
+          id="email"
+          matInput
+          formControlName="email"
+          type="email"
+          placeholder="Enter your email"
+          floatLabel="auto"
+        />
+        @if (loginForm.get('email')?.hasError('required')) {
+          <mat-error>
+            <i [appFeatherIcon]="'alert-triangle'" [width]="12" [height]="12"></i> Email is required
+          </mat-error>
+        } @else if (loginForm.get('email')?.hasError('email')) {
+          <mat-error
+            ><i [appFeatherIcon]="'alert-triangle'" [width]="12" [height]="12"></i> Enter a valid
+            email
+          </mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-container">
+      <label for="password">Password <span class="required-asterisk">*</span></label>
+      <mat-form-field appearance="outline">
+        <input
+          id="password"
+          matInput
+          formControlName="password"
+          type="password"
+          placeholder="Enter your password"
+        />
+        @if (loginForm.get('password')?.hasError('required')) {
+          <mat-error
+            ><i [appFeatherIcon]="'alert-triangle'" [width]="12" [height]="12"></i> Password is
+            required
+          </mat-error>
+        } @else if (loginForm.get('password')?.hasError('minlength')) {
+          <mat-error
+            ><i [appFeatherIcon]="'alert-triangle'" [width]="12" [height]="12"></i> Password must be
+            at least 6 characters
+          </mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <button matButton="filled" type="submit" class="login-btn">Log in</button>
+  </form>
+</div>
