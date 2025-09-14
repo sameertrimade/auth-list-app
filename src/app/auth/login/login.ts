@@ -1,5 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { finalize } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,10 +48,13 @@ export class LogInComponent implements OnInit {
 
     this.auth
       .login(email, password)
-      .pipe(finalize(() => this.isSubmitting.set(false)))
+      .pipe(
+        finalize(() => this.isSubmitting.set(false)),
+        takeUntilDestroyed(),
+      )
       .subscribe({
         next: () => {
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigate(['/dashboard']);
         },
         error: (err) => {
           console.error(err);

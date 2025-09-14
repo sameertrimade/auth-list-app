@@ -1,10 +1,10 @@
 <header class="topbar">
   <nav class="topbar-nav-container">
-    <button matButton class="back-btn" type="button">
+    <button matButton class="back-btn" type="button" (click)="goToDashboard()">
       <i [appFeatherIcon]="'arrow-left'" [width]="12" [height]="12"></i> Back to Dashboard
     </button>
     <h1 class="app-heading">Items List</h1>
-    <button matButton class="logout-btn" type="button">
+    <button matButton class="logout-btn" type="button" (click)="onLogout()">
       <i [appFeatherIcon]="'log-out'" [width]="12" [height]="12"></i> Logout
     </button>
   </nav>
