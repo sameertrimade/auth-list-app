@@ -1,8 +1,10 @@
-import { Component, OnInit, Signal, signal } from '@angular/core';
+import { Component, inject, OnInit, Signal, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { FeatherIconDirective } from '../shared/directives/feather-icon.directive';
 import { Department } from '../shared/models/department.model';
+import { HelperService } from '../core/services/helper.service';
 
 @Component({
   standalone: true,
@@ -31,5 +33,16 @@ export class ListComponent implements OnInit {
     },
   ]);
 
+  private helperService = inject(HelperService);
+  private router = inject(Router);
+
   ngOnInit() {}
+
+  onLogout(): void {
+    this.helperService.logout();
+  }
+
+  goToDashboard(): void {
+    this.router.navigate(['/dashboard']);
+  }
 }
