@@ -1,9 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FeatherIconDirective } from '../../shared/directives/feather-icon.directive';
+import { AuthService } from '../auth.service';
 
 @Component({
   standalone: true,
@@ -20,8 +23,11 @@ import { FeatherIconDirective } from '../../shared/directives/feather-icon.direc
 })
 export class LogInComponent implements OnInit {
   loginForm!: FormGroup;
+  isSubmitting = signal(false);
 
   private fb = inject(FormBuilder);
+  private auth = inject(AuthService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -31,10 +37,24 @@ export class LogInComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      console.log('Form submitted:', this.loginForm.value);
-    } else {
+    if (this.loginForm.invalid || this.isSubmitting()) {
       this.loginForm.markAllAsTouched();
+      return;
     }
+
+    this.isSubmitting.set(true);
+    const { email, password } = this.loginForm.value;
+
+    this.auth
+      .login(email, password)
+      .pipe(finalize(() => this.isSubmitting.set(false)))
+      .subscribe({
+        next: () => {
+          this.router.navigateByUrl('/dashboard');
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
 }

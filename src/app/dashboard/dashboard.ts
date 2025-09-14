@@ -9,8 +9,4 @@ import { FeatherIconDirective } from '../shared/directives/feather-icon.directiv
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })
-export class DashboardComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class DashboardComponent {}
