@@ -1,1 +1,25 @@
-<h3>Dashboard Component Works!</h3>
+<header class="topbar">
+  <nav class="topbar-nav-container">
+    <h1 class="app-heading">Dashboard</h1>
+    <button matButton class="logout-btn" type="button">
+      <i [appFeatherIcon]="'log-out'" [width]="12" [height]="12"></i> Logout
+    </button>
+  </nav>
+</header>
+
+<main class="main-page">
+  <section class="hero-section">
+    <h2 class="hero-title">Welcome!</h2>
+    <p class="hero-subtitle">Logged in as: <strong>john.doe&#64;example.com</strong></p>
+  </section>
+
+  <section class="quick-actions-card">
+    <p class="card-title">Quick Actions</p>
+    <div class="card-body">
+      <button matButton="filled" class="goto-list-btn" type="button">
+        <i class="list-icon" [appFeatherIcon]="'list'" [width]="14" [height]="14"></i> Go to Items
+        List
+      </button>
+    </div>
+  </section>
+</main>

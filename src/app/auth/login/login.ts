@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FeatherIconDirective } from '../../shared/feather-icon.directive';
+import { FeatherIconDirective } from '../../shared/directives/feather-icon.directive';
 
 @Component({
   standalone: true,
