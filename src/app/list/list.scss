@@ -72,3 +72,9 @@
 .dept-desc {
   font-size: 0.875rem;
 }
+
+app-loading-spinner,
+app-error-block,
+app-empty-state {
+  margin-top: 12%;
+}

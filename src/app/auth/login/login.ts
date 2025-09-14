@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { finalize } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
@@ -29,6 +29,7 @@ export class LogInComponent implements OnInit {
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
   private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -50,7 +51,7 @@ export class LogInComponent implements OnInit {
       .login(email, password)
       .pipe(
         finalize(() => this.isSubmitting.set(false)),
-        takeUntilDestroyed(),
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe({
         next: () => {
