@@ -49,6 +49,8 @@
       </mat-form-field>
     </div>
 
-    <button matButton="filled" type="submit" class="login-btn">Log in</button>
+    <button matButton="filled" type="submit" class="login-btn" [disabled]="isSubmitting()">
+      Log in
+    </button>
   </form>
 </div>

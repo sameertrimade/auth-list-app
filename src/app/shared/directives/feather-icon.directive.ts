@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
+import { Directive, ElementRef, inject, Input, OnChanges } from '@angular/core';
 import feather from 'feather-icons';
 
 type FeatherIconName = keyof typeof feather.icons;
@@ -12,7 +12,7 @@ export class FeatherIconDirective implements OnChanges {
   @Input() width?: number;
   @Input() height?: number;
 
-  constructor(private el: ElementRef<HTMLElement>) {}
+  private el = inject(ElementRef<HTMLElement>);
 
   ngOnChanges(): void {
     const icon = feather.icons[this.iconName];
