@@ -1,0 +1,74 @@
+.topbar {
+  background-color: #ffffff;
+  padding: 1rem 8rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.topbar-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #171e25;
+}
+
+.logout-btn,
+.back-btn {
+  color: #171e25 !important;
+}
+
+.logout-btn:hover {
+  background: red;
+  color: #ffffff !important;
+}
+
+.back-btn:hover {
+  background: #394657;
+  color: #ffffff !important;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-section {
+  width: 89%;
+}
+
+.list-heading {
+  margin: 2rem 0;
+  font-size: 1.25rem;
+}
+
+.list-container {
+  padding: 0 !important;
+}
+
+.list-container > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.list-item-container {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  border: 1px solid #e4e9f0;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.dept-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.dept-desc {
+  font-size: 0.875rem;
+}
