@@ -1,0 +1,12 @@
+<div class="loading-container">
+  <mat-progress-spinner
+    mode="indeterminate"
+    [diameter]="diameter"
+    [strokeWidth]="strokeWidth"
+    color="primary"
+  >
+  </mat-progress-spinner>
+  @if (message) {
+    <p>{{ message }}</p>
+  }
+</div>
