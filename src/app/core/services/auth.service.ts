@@ -2,6 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { tap } from 'rxjs/operators';
+import { LoginRequest } from '../../shared/models/login-request.model';
+import { LoginResponse } from '../../shared/models/login-response.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -9,14 +11,13 @@ export class AuthService {
   private cookie = inject(CookieService);
 
   login(email: string, password: string) {
-    return this.http
-      .post<{ token: string; user: { email: string } }>('/api/login', { email, password })
-      .pipe(
-        tap((res) => {
-          this.cookie.set('auth_token', res.token, { path: '/', secure: true });
-          this.cookie.set('user_email', res.user.email, { path: '/' });
-        }),
-      );
+    const loginCredentials: LoginRequest = { email, password };
+    return this.http.post<LoginResponse>('/api/login', loginCredentials).pipe(
+      tap((res: LoginResponse) => {
+        this.cookie.set('auth_token', res.token, { path: '/', secure: true });
+        this.cookie.set('user_email', res.user.email, { path: '/' });
+      }),
+    );
   }
 
   logout() {

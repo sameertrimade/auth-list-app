@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { LogInComponent } from './auth/login/login';
 import { DashboardComponent } from './dashboard/dashboard';
 import { NotFoundComponent } from './not-found/not-found';
-import { AuthGuard } from './auth/auth.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LogInComponent },
