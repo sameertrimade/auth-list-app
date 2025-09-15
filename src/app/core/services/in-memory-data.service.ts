@@ -23,6 +23,41 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'Orthopedics',
         description: 'Focuses on conditions involving the musculoskeletal system.',
       },
+      {
+        id: 4,
+        name: 'Neurology',
+        description: 'Deals with disorders of the brain, spinal cord, and nervous system.',
+      },
+      {
+        id: 5,
+        name: 'Oncology',
+        description: 'Specializes in the diagnosis and treatment of cancer.',
+      },
+      {
+        id: 6,
+        name: 'Dermatology',
+        description: 'Provides treatment for conditions related to skin, hair, and nails.',
+      },
+      {
+        id: 7,
+        name: 'Gastroenterology',
+        description: 'Focuses on the digestive system and its disorders.',
+      },
+      {
+        id: 8,
+        name: 'Endocrinology',
+        description: 'Manages hormone-related conditions such as diabetes and thyroid disorders.',
+      },
+      {
+        id: 9,
+        name: 'Psychiatry',
+        description: 'Specializes in the diagnosis and treatment of mental health disorders.',
+      },
+      {
+        id: 10,
+        name: 'Nephrology',
+        description: 'Deals with kidney function and related diseases.',
+      },
     ];
     return { departments };
   }

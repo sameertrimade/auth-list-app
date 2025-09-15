@@ -1,4 +1,3 @@
-// shared/components/empty-state/empty-state.component.ts
 import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FeatherIconDirective } from '../../directives/feather-icon.directive';
