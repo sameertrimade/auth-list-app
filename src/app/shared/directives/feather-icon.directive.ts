@@ -8,9 +8,9 @@ type FeatherIconName = keyof typeof feather.icons;
   standalone: true,
 })
 export class FeatherIconDirective implements OnChanges {
-  @Input('appFeatherIcon') iconName!: FeatherIconName;
-  @Input() width?: number;
-  @Input() height?: number;
+  @Input({ alias: 'appFeatherIcon', required: true }) iconName!: FeatherIconName;
+  @Input({ required: true }) width!: number;
+  @Input({ required: true }) height!: number;
 
   private el = inject(ElementRef<HTMLElement>);
 

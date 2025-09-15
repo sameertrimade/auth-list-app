@@ -1,5 +1,8 @@
-<div class="login-container">
-  <h2>Login</h2>
+<main class="login-container">
+  <header>
+    <h2>Login</h2>
+  </header>
+
   <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-field-container">
       <label for="email">Email <span class="required-asterisk">*</span></label>
@@ -53,4 +56,4 @@
       Log in
     </button>
   </form>
-</div>
+</main>

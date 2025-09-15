@@ -9,7 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './loading-spinner.scss',
 })
 export class LoadingSpinnerComponent {
-  @Input() message = 'Loading...';
-  @Input() diameter = 40;
-  @Input() strokeWidth = 4;
+  @Input() message: string = 'Loading...';
+  @Input() diameter: number = 40;
+  @Input() strokeWidth: number = 4;
 }

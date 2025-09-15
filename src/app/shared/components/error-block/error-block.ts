@@ -10,5 +10,5 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './error-block.scss',
 })
 export class ErrorBlockComponent {
-  @Input() message = 'Something went wrong. Please try again.';
+  @Input() message: string = 'Something went wrong. Please try again.';
 }

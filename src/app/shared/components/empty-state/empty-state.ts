@@ -10,6 +10,6 @@ import { FeatherIconDirective } from '../../directives/feather-icon.directive';
   styleUrl: './empty-state.scss',
 })
 export class EmptyStateComponent {
-  @Input() title = 'No data available';
-  @Input() subtitle = 'Please add some items to get started.';
+  @Input({ required: true }) title!: string;
+  @Input({ required: true }) subtitle!: string;
 }

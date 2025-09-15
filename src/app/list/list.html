@@ -14,7 +14,10 @@
   @if (store.isLoading()) {
     <app-loading-spinner></app-loading-spinner>
   } @else if (!store.isLoading() && !store.error() && store.departments().length === 0) {
-    <app-empty-state></app-empty-state>
+    <app-empty-state
+      [title]="'No data available'"
+      [subtitle]="'Please add some items to get started.'"
+    ></app-empty-state>
   } @else if (!store.isLoading() && !store.error() && store.departments().length) {
     <section class="list-section">
       <h3 class="list-heading">Available Medical Departments</h3>

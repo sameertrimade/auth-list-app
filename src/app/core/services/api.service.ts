@@ -7,7 +7,7 @@ import { LoginResponse } from '../../shared/models/login-response.model';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private http = inject(HttpClient);
-  private baseUrl = '/api';
+  private baseUrl: string = '/api';
 
   login(email: string, password: string): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.baseUrl}/login`, { email, password });
