@@ -1,26 +1,82 @@
 # AuthListApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+An Angular demo application that showcases a simple authentication flow and a protected list view backed by a mock API. Users can log in, and upon successful authentication, access a departments list fetched from an in-memory backend. An HTTP interceptor attaches a bearer token to secure requests, while route guards protect restricted pages.
 
-## Development server
+## Overview
 
-To start a local development server, run:
+- **Auth flow**: Login sets a cookie-based token; logout clears it. A route `AuthGuard` restricts access to protected routes.
+- **HTTP interceptor**: Automatically adds `Authorization: Bearer <token>` to API calls when authenticated.
+- **Mock backend**: Uses `angular-in-memory-web-api` to simulate `/api/login` and `/api/departments` endpoints with a fake JWT.
+- **Departments list**: A protected page that displays sample hospital departments.
+
+### Tech stack
+
+- **Framework**: Angular 20
+- **UI**: Angular Material, Feather icons
+- **State/Signals**: `@ngrx/signals` (local store patterns)
+- **HTTP/Mocks**: `angular-in-memory-web-api`
+- **Cookies**: `ngx-cookie-service`
+
+## Getting started
+
+### Prerequisites
+
+- Node.js 20+ and npm 10+
+- Angular CLI (optional but recommended):
 
 ```bash
-ng serve
+npm i -g @angular/cli
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the development server
+
+```bash
+npm start
+```
+
+Then open `http://localhost:4200/`.
+
+### Test login (mock)
+
+- You can use any email. Any **non-empty** password is accepted by the mock API.
+- On success, a fake token `fake-jwt-token-12345` is stored in cookies and applied to subsequent requests.
+
+## Available scripts
+
+```bash
+npm start   # ng serve
+npm run build
+npm run watch
+npm test
+```
+
+## Project structure (high-level)
+
+- `src/app/core` — auth guard, auth service, HTTP interceptor, mock API service
+- `src/app/auth` — login feature
+- `src/app/list` — protected departments list and local store
+- `src/app/shared` — reusable components, directives, and models
+
+## Development notes
+
+- The auth cookie names are `auth_token` and `user_email`.
+- Protected APIs require header `Authorization: Bearer fake-jwt-token-12345` (handled by the interceptor).
 
 ## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Generate a new component with:
 
 ```bash
 ng generate component component-name
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+See all schematics:
 
 ```bash
 ng generate --help
@@ -28,32 +84,18 @@ ng generate --help
 
 ## Building
 
-To build the project run:
-
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build artifacts are output to `dist/`. Production builds are optimized by default.
 
 ## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
 ```bash
-ng test
+npm test
 ```
 
-## Running end-to-end tests
+## Additional resources
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular CLI docs: https://angular.dev/tools/cli
