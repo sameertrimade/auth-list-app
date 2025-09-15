@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { FeatherIconDirective } from '../shared/directives/feather-icon.directive';
-import { AuthService } from '../auth/auth.service';
 import { HelperService } from '../core/services/helper.service';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   standalone: true,
